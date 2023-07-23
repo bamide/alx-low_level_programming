@@ -1,29 +1,28 @@
-#include <unistd.h>
-
-/* Custom _putchar function (as it's only allowed to use twice) */
-int _putchar(char c)
-{
-    return write(1, &c, 1);
-}
+#include <stdio.h> 
+#include "main.h" 
 /**
- * print_alphabet - Prints the lowercase alphabet followed by a new line.
+ * print_alphabet - Prints the alphabet in lowercase followed by a new line.
  */
 void print_alphabet(void)
 {
-    char ch;
-    for (ch = 'a'; ch <= 'z'; ch++)
+    char current_char = 'a'; // Starting ASCII value for lowercase 'a'
+
+    while (current_char <= 'z')
     {
-        _putchar(ch);
+        putchar(current_char); // Using putchar to print a character
+        current_char++;
     }
-    _putchar('\n');
-} 
+
+    putchar('\n'); // Using putchar to print a new line
+}
+
 /**
- * main - Entry point of the program (for testing).
- *
- * Return: Always 0 (success).
+ * main - Entry point of the program
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-    print_alphabet();
+    print_alphabet(); // Call the function to print the alphabet
     return 0;
-}  
+}
+
