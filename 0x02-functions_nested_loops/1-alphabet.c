@@ -15,13 +15,3 @@ void print_alphabet(void)
     putchar('\n'); // Using putchar to print a new line
 }
 
-/**
- * main - Entry point of the program
- * Return: Always 0 (Success)
- */
-int main(void)
-{
-    print_alphabet(); // Call the function to print the alphabet
-    return 0;
-}
-
