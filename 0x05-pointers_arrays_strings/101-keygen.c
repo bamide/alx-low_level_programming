@@ -2,50 +2,32 @@
 #include <stdlib.h>
 #include <time.h>
 
-/**
- * generateRandomPassword - Generate a random password of given length.
- * @password: Pointer to the buffer where the generated password will be stored.
- * @length: The length of the password to be generated.
- */
-void generateRandomPassword(char *password, int length)
-{
-	const char charset[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	int charsetLength = sizeof(charset) - 1;
+#define MAX_PASSWORD_LENGTH 12
 
-	for (int i = 0; i < length; i++)
-	{
-		password[i] = charset[rand() % charsetLength];
-	}
-	password[length] = '\0'; // Null-terminate the string
+char generateRandomChar() {
+    char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+    int index = rand() % (sizeof(charset) - 1);
+    return charset[index];
 }
 
-/**
- * main - Entry point of the program.
- *
- * Return: Always 0 on success.
- */
-int main(void)
-{
-	srand(time(NULL));
+int main() {
+    int passwordLength, i;
 
-	int passwordLength = 12; // You can change this to the desired password length
+    printf("Enter the password length (up to %d): ", MAX_PASSWORD_LENGTH);
+    scanf("%d", &passwordLength);
 
-	// Allocate memory for the password
-	char *password = malloc((passwordLength + 1) * sizeof(char));
+    if (passwordLength > MAX_PASSWORD_LENGTH || passwordLength <= 0) {
+        printf("Invalid password length. Please enter a value between 1 and %d.\n", MAX_PASSWORD_LENGTH);
+        return 1;
+    }
 
-	if (password == NULL)
-	{
-		return 1; // Memory allocation error
-	}
+    srand(time(NULL));
 
-	// Generate the random password
-	generateRandomPassword(password, passwordLength);
+    printf("Generated password: ");
+    for (i = 0; i < passwordLength; i++) {
+        printf("%c", generateRandomChar());
+    }
+    printf("\n");
 
-	// Use the generated password for your specific purpose here
-	// For example, you can store it in a file or use it for further processing.
-
-	// Free allocated memory
-	free(password);
-
-	return 0;
+    return 0;
 }
