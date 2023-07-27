@@ -1,25 +1,25 @@
 #include <stdio.h>
 
 /**
- * main - check the code
- * @a: an array of integers
- * @n: the number of elements to swap
- *
- * Return: nothing.
+ * reverse_array - Reverses the content of an array of integers.
+ * @a: Pointer to the array.
+ * @n: Number of elements in the array.
  */
-void print_array(int *a, int n)
+void reverse_array(int *a, int n)
 {
-    int i;
+	int temp;
+	int i = 0;
+	int j = n - 1;
 
-    i = 0;
-    while (i < n)
-    {
-        if (i != 0)
-        {
-            printf(", ");
-        }
-        printf("%d", a[i]);
-        i++;
-    }
-    printf("\n");
+	while (i < j)
+	{
+		/* Swap elements at positions i and j */
+		temp = a[i];
+		a[i] = a[j];
+		a[j] = temp;
+
+		/* Move towards the center of the array */
+		i++;
+		j--;
+	}
 }
