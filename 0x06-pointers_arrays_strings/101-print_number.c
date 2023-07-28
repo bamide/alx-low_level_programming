@@ -1,18 +1,22 @@
-#include <stdio.h>
+#include "coding.h"
 
+/**
+ * print_number - function with one argument
+ * @n: int type argument
+ *
+ * Description: prints an integer
+ * Return: value of n
+ */
 void print_number(int n)
 {
-	if (n == 0)
+	if (n < 0)
 	{
-		_putchar('0'); /* Handle the special case of n=0 separately */
+		n = -n;
+		_putchar('-');
 	}
-	else
+	if (n / 10)
 	{
-		if (n < 0)
-		{
-			_putchar('-'); /* Print negative sign if n is negative */
-			n = -n; /* Make n positive for the recursive function */
-		}
-		print_number_recursive(n); /* Call the recursive function for positive n */
+		print_number(n / 10);
 	}
+	_putchar(n % 10 + '0');
 }
