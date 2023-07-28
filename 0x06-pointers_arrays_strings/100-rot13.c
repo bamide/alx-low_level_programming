@@ -1,41 +1,33 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "main.h"
 
 /**
- * rot13 - Encodes a string using ROT13 cipher.
- * @input: The input string to be encoded.
+ * rot13 - function with 1 argument
+ * @str: char type pointer argument
  *
- * Return: A pointer to the encoded string.
+ * Description: encodes rot13 with a string
+ * Return: string value
  */
-char *rot13(char *input)
+char *rot13(char *str)
 {
-	char *output;
-	int i, c;
+	char *input, *output;
+	int count, count2;
 
-	output = (char *)malloc(strlen(input) + 1);
-	if (!output)
+	input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	count = 0;
+	while (str[count] != '\0')
 	{
-		printf("Memory allocation error!\n");
-		return (NULL);
-	}
-
-	for (i = 0; input[i] != '\0'; i++)
-	{
-		c = input[i];
-		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		count2 = 0;
+		while (input[count2] != '\0')
 		{
-			if (c >= 'A' && c <= 'Z')
-				output[i] = ((c - 'A' + 13) % 26) + 'A';
-			else
-				output[i] = ((c - 'a' + 13) % 26) + 'a';
+			if (str[count] == input[count2])
+			{
+				str[count] = output[count2];
+				break;
+			}
+			count2++;
 		}
-		else
-		{
-			output[i] = c;
-		}
+		count++;
 	}
-	output[i] = '\0';
-
-	return (output);
+	return (str);
 }
