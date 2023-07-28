@@ -1,39 +1,43 @@
-#include <stdio.h>
-#include <ctype.h>
+#include "coding.h"
 
 /**
- * cap_string - Capitalizes all words in a string.
- * @str: The input string.
+ * cap_string - function with one argument
+ * @str: char type pointer
  *
- * Return: Pointer to the modified string.
+ * Description: capitalizes all words of a string
+ * Return: pointer
  */
 char *cap_string(char *str)
 {
-    int capitalize_next = 1; // Flag to indicate if the next character should be capitalized
+	int i;
 
-    for (int i = 0; str[i] != '\0'; i++)
-    {
-        // Check if the current character is a separator
-        if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
-            str[i] == ',' || str[i] == ';' || str[i] == '.' || str[i] == '!' ||
-            str[i] == '?' || str[i] == '"' || str[i] == '(' || str[i] == ')' ||
-            str[i] == '{' || str[i] == '}')
-        {
-            capitalize_next = 1; // Set the flag to capitalize the next character
-        }
-        else if (capitalize_next)
-        {
-            // If the flag is set, capitalize the current character and reset the flag
-            str[i] = toupper(str[i]);
-            capitalize_next = 0;
-        }
-        else
-        {
-            // If the flag is not set, convert the current character to lowercase
-            str[i] = tolower(str[i]);
-        }
-    }
-
-    return str;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[0] >= 'a' && str[0] <= 'z')
+			str[i] = str[i] - 32;
+		switch (str[i])
+		{
+		case ' ':
+		case '\t':
+		case '\n':
+		case ',':
+		case ';':
+		case '.':
+		case '!':
+		case '?':
+		case '"':
+		case '(':
+		case ')':
+		case '{':
+		case '}':
+			if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
+			{
+				str[i + 1] = str[i + 1] - 32;
+			}
+		}
+		i++;
+	}
+	return (str);
 }
 
