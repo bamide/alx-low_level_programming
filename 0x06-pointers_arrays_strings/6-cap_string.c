@@ -1,4 +1,4 @@
-#include "coding.h"
+#include "main.h"
 
 /**
  * cap_string - function with one argument
@@ -40,4 +40,3 @@ char *cap_string(char *str)
 	}
 	return (str);
 }
-
