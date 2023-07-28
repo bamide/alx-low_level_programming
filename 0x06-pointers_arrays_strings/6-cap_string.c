@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <ctype.h>
+#include <stdio.h> 
 
 /**
  * cap_string - Capitalizes all words in a string.
