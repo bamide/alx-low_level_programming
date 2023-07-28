@@ -1,43 +1,33 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "main.h"
 
 /**
- * leet - Encodes a string into 1337.
- * @str: The input string to be encoded.
+ * leet - function with one argument
+ * @str: char type pointer argument
  *
- * Return: A newly allocated string containing the encoded version
- *         of the original string.
+ * Description: encodes a string in 1337
+ * Return: value of encoded string
  */
 char *leet(char *str)
 {
-	if (str == NULL)
-		return NULL;
+	char *letters, *replace;
+	int count, count2;
 
-	char *encoded_str = (char *)malloc(strlen(str) + 1);
-	if (encoded_str == NULL)
-		return NULL;
+	letters = "aAeEoOtTlL";
+	replace = "4433007711";
 
-	int i, j;
-	char leet_map[] = {'4', '3', '0', '7', '1'};
-	char original_letters[] = {'a', 'e', 'o', 't', 'l'};
-
-	for (i = 0, j = 0; str[i] != '\0'; i++, j++)
+	count = 0;
+	while (str[count] != '\0')
 	{
-		encoded_str[j] = str[i];
-
-		if ((str[i] == ' ') || (str[i] == '\n') || (str[i] == '\t'))
-			continue;
-
-		for (int k = 0; k < 5; k++)
+		count2 = 0;
+		while (letters[count2] != '\0')
 		{
-			if (str[i] == original_letters[k] || str[i] == original_letters[k] - 32)
+			if (str[count] == letters[count2])
 			{
-				encoded_str[j] = leet_map[k];
-				break;
+				str[count] = replace[count2];
 			}
+			count2++;
 		}
+		count++;
 	}
-
-	encoded_str[j] = '\0';
-	return encoded_str;
+	return (str);
 }
