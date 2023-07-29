@@ -1,18 +1,20 @@
-#include "main.h"
+#include "main.h" 
 
 /**
-*print_numbers - print 0123456789
-* owned by Bwave ICT
-*Return: void
-*/
-
+ * print_numbers - function with no arguments
+ *
+ * Description: print numbers with using _putchar from 0 to 9
+ * Return: 0 only
+ */
 void print_numbers(void)
 {
-	char c;
+	int i;
 
-	for (c = '0'; c <= '9'; c++)
+	i = 0;
+	while (i <= 9)
 	{
-	_putchar(c);
+		_putchar(i + '0');
+		i++;
 	}
 	_putchar('\n');
 }
