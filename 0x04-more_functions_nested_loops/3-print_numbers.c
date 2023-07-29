@@ -1,20 +1,18 @@
-#include "main.h" 
+#include "main.h"
 
 /**
- * print_numbers - function with no arguments
+ * print_numbers - _putchar the numbers, from 0 to 9, followed by a new line
  *
- * Description: print numbers with using _putchar from 0 to 9
- * Return: 0 only
+ * Return: no return
  */
+
 void print_numbers(void)
 {
-	int i;
+	int ch;
 
-	i = 0;
-	while (i <= 9)
+	for (ch = 48; ch < 58; ch++)
 	{
-		_putchar(i + '0');
-		i++;
+		_putchar(ch);
 	}
 	_putchar('\n');
 }
