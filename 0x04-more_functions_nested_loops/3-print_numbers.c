@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "mainn.h"
 
 /**
  * _putchar - writes a character to stdout
@@ -24,15 +24,4 @@ void print_numbers(void)
 		_putchar(numbers[i]);
 		i++;
 	}
-}
-
-/**
- * main - Entry point
- *
- * Return: Always 0 (Success)
- */
-int main(void)
-{
-	print_numbers();
-	return (0);
 }
