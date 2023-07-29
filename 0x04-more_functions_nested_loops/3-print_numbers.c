@@ -1,27 +1,22 @@
 #include "main.h"
 
-/**
- * _putchar - writes a character to stdout
- * @c: The character to print
- *
- * Return: On success, 1. On error, -1.
- */
 int _putchar(char c)
 {
-	return write(1, &c, 1);
+    return write(1, &c, 1);
 }
 
 /**
- * print_numbers - prints the numbers from 0 to 9, followed by a new line
+ * print_numbers - Prints the numbers from 0 to 9 followed by a new line.
  */
 void print_numbers(void)
 {
-	char numbers[] = "0123456789\n";
-	int i = 0;
+    int i;
 
-	while (i < 11) /* Loop from 0 to 9, plus the new line character */
-	{
-		_putchar(numbers[i]);
-		i++;
-	}
+    for (i = 0; i < 10; i++)
+    {
+        _putchar(i + '0');
+        if (i < 9)
+            _putchar(' ');
+    }
+    _putchar('\n');
 }
