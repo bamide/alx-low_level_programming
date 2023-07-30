@@ -1,25 +1,19 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
- * print_most_numbers - Prints the numbers from 0 to 9, excluding 2 and 4,
- *                      followed by a new line.
- */
+*print_most_numbers - prints
+* owned by Bwave ICT
+*Return: void
+*/
+
 void print_most_numbers(void)
 {
-    char numbers[] = "01356789\n"; // The numbers to print
-    int i = 0;
+	char c;
 
-    while (numbers[i] != '\0')
-    {
-        // Using putchar to print each character
-        putchar(numbers[i]);
-        i++;
-    }
-}
-
-int main(void)
-{
-    // Call the function to print the numbers
-    print_most_numbers();
-    return 0;
+	for (c = '0'; c <= '9'; c++)
+	{
+	if (!(c == '2' || c == '4'))
+	_putchar(c);
+	}
+	_putchar('\n');
 }
