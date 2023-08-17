@@ -1,41 +1,64 @@
 #include <stdio.h>
+#include "function_pointers.h"
 #include "3-calc.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+
 /**
- * main - check the code for Holberton School students.
- * @argc: argument count.
- * @argv: argument vector.
+ * main - Entry point of the program
+ * @argc: The number of command line arguments
+ * @argv: An array containing the command line arguments
  *
- * Return: Always 0.
+ * Return: 0 on success, 98 for wrong argument count, 99 for invalid operator,
+ *         and 100 for division/modulo by zero.
  */
 int main(int argc, char *argv[])
 {
-	int a, b;
-	int (*operation)(int, int);
+    if (argc != 4)
+    {
+        printf("Error\n");
+        return 98;
+    }
 
-	if (argc != 4)
-	{
-		printf("Error\n");
-		exit(98);
-	}
+    int num1 = atoi(argv[1]);
+    char operator = argv[2][0];
+    int num2 = atoi(argv[3]);
 
-	if (argv[2][1])
-	{
-		printf("Error\n");
-		exit(99);
-	}
+    int result;
 
-	operation = get_op_func(argv[2]);
+    switch (operator)
+    {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 == 0)
+            {
+                printf("Error\n");
+                return 100;
+            }
+            result = num1 / num2;
+            break;
+        case '%':
+            if (num2 == 0)
+            {
+                printf("Error\n");
+                return 100;
+            }
+            result = num1 % num2;
+            break;
+        default:
+            printf("Error\n");
+            return 99;
+    }
 
-	if (operation == NULL)
-	{
-		printf("Error\n");
-		exit(99);
-	}
-
-	a = atoi(argv[1]);
-	b = atoi(argv[3]);
-
-	printf("%d\n", operation(a, b));
-	return (0);
+    printf("%d\n", result);
+    return 0;
 }
