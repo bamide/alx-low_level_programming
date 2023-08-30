@@ -2,11 +2,6 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-typedef struct listint_s {
-    int n;
-    struct listint_s *next;
-} listint_t;
-
 /**
  * free_listint_safe - Frees a listint_t list.
  * @h: Double pointer to the head of the list.
