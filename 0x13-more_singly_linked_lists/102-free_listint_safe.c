@@ -11,23 +11,24 @@
  *
  * Return: The size of the list that was freed.
  */
+typedef struct listint_t
+{
+    int data;
+    struct listint_t *next;
+} listint_t;
+
 size_t free_listint_safe(listint_t **h)
 {
     size_t size = 0;
-    listint_t *current, *temp;
+    listint_t *current = *h;
+    listint_t *temp;
 
-    if (h == NULL || *h == NULL)
-        return 0;
-
-    current = *h;
     while (current != NULL)
     {
-        size++;
         temp = current;
         current = current->next;
         free(temp);
-        if (temp <= current)
-            break; // Avoid circular loops
+        size++;
     }
 
     *h = NULL;
