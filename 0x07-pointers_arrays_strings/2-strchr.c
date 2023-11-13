@@ -1,4 +1,5 @@
 #include "main.h" 
+#include <stdio.h>
 
 /**
  * _strchr - function with two arguments
@@ -10,13 +11,19 @@
  */
 char *_strchr(char *s, char c)
 {
-	while (*s)
-	{
-		if (*s == c)
-			return (s);
-		s++;
-	}
-	if (*s == c)
-		return (s);
-	return (0);
+    while (*s != '\0')
+    {
+        if (*s == c)
+        {
+            return s; // Return the pointer when the character is found
+        }
+        s++;
+    }
+
+    if (c == '\0')
+    {
+        return s; // Return the pointer at the end for null character
+    }
+
+    return NULL; // Return NULL if the character is not found
 }
