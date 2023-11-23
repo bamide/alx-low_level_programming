@@ -41,13 +41,13 @@ int main(int argc, char *argv[]) {
 
     /* Check the number of arguments */
     if (argc != 3) {
-        printf("Error\n");
+        fprintf(stderr, "Error\n");
         return 98;
     }
 
     /* Check if arguments are composed of digits */
     if (!isNumeric(argv[1]) || !isNumeric(argv[2])) {
-        printf("Error\n");
+        fprintf(stderr, "Error\n");
         return 98;
     }
 
@@ -63,3 +63,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
