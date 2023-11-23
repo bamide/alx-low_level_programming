@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include "main.h"
 
 /**
  * isNumeric - Check if a string is composed of digits
